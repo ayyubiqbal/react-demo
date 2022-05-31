@@ -1,6 +1,4 @@
 import { useState } from "react";
-import InputSection from "./components/inputs/InputSection";
-import Button from "./components/ui/Button";
 
 /**
  * DONE: handle user inputs fields
@@ -9,6 +7,15 @@ import Button from "./components/ui/Button";
  * DONE: render history list
  * DONE: restore the history
  */
+
+const InputField = ({ inputState, handleInputFields, name }) => (
+  <input
+    type="number"
+    value={inputState.a}
+    onChange={handleInputFields}
+    name={name}
+  />
+);
 
 function* generateId() {
   let id = 1;
@@ -114,14 +121,27 @@ const App = () => {
   return (
     <div style={{ width: "50%", margin: "0 auto" }}>
       <h1>Result: {result}</h1>
-      <InputSection inputs={inputState} handleInputFields={handleInputFields} />
+      <div>
+        <p>Inputs</p>
+        <InputField
+          inputState={inputState}
+          handleInputFields={handleInputFields}
+          name="a"
+        />
+        <input
+          type="number"
+          value={inputState.b}
+          onChange={handleInputFields}
+          name="b"
+        />
+      </div>
       <div>
         <p>Operations</p>
-        <Button text="+" onClick={() => handleArithmeticsOps("+")} />
-        <Button text="-" onClick={() => handleArithmeticsOps("-")} />
-        <Button text="*" onClick={() => handleArithmeticsOps("*")} />
-        <Button text="/" onClick={() => handleArithmeticsOps("/")} />
-        <Button text="%" onClick={() => handleArithmeticsOps("%")} />
+        <button onClick={() => handleArithmeticsOps("+")}>+</button>
+        <button onClick={() => handleArithmeticsOps("-")}>-</button>
+        <button onClick={() => handleArithmeticsOps("*")}>*</button>
+        <button onClick={() => handleArithmeticsOps("/")}>/</button>
+        <button onClick={() => handleArithmeticsOps("%")}>%</button>
         <button onClick={handleInputClear}>clear</button>
       </div>
       <div>

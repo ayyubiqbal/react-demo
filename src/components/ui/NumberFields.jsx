@@ -7,6 +7,7 @@ const NumberFields = ({ value, onChange, name }) => {
     border: "1px solid gray",
     background: "#fff",
     outline: "none",
+    width: "100%",
   };
   return (
     <input
